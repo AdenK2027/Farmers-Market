@@ -12,7 +12,7 @@ interface ProductProps {
 }
 
 export function ProductProfile({ name, price, stock, category }: ProductProps) {
-    const categoryImage = `../${category}.png`
+    const categoryImage = `${category}.png`
     console.log(categoryImage);
     return (
         <div className="productContainer">
@@ -20,7 +20,7 @@ export function ProductProfile({ name, price, stock, category }: ProductProps) {
                 <img src={categoryImage} 
                 style={{height: "5vw", paddingRight: "10px"}}
                 onError={(e) => {
-                    (e.target as HTMLImageElement).src = "../shoppingCart.png";
+                    (e.target as HTMLImageElement).src = "shoppingCart.png";
                 }}></img>
                 <div style={{display: "flex", flexDirection: "column"}}>
                     <p className="productText">{`Name: ${name}`}</p>
@@ -78,7 +78,7 @@ export function MarketProfile({ organizer, date, address, duration }: MarketProp
     return (
         <div className="marketContainer">
             <div style={{display: "flex", flexDirection: "row"}}>
-                <img src="../market.png" style={{height: "8vw", paddingRight: "10px"}}></img>
+                <img src="market.png" style={{height: "8vw", paddingRight: "10px"}}></img>
                 <div style={{display: "flex", flexDirection: "column"}}>
                     <p className="productText">{`Organizer: ${organizer}`}</p>
                     <p className="productText">{`Date: ${dateFormatted}`}</p>
@@ -223,7 +223,7 @@ export default function VendorProfile({ base, categories }: VendorProfileProps) 
     const nameParts = vendor.fields.name.trim().split(/\s+/);
     const fname = nameParts[0].toLocaleLowerCase();
     const lname = nameParts.length > 1 ? nameParts[nameParts.length - 1].toLocaleLowerCase() : "";
-    const profileImage = `../${fname}${lname}.png`;
+    const profileImage = `${fname}${lname}.png`;
 
     return (
         <div className="profileFrame">
@@ -237,7 +237,7 @@ export default function VendorProfile({ base, categories }: VendorProfileProps) 
                 <img src={profileImage} 
                 style={{height: "100%"}} 
                 onError={(e) => {
-                    (e.target as HTMLImageElement).src = "../userProfile.png";
+                    (e.target as HTMLImageElement).src = "userProfile.png";
                 }}></img>
                 <div className="description">
                     <h1 style={{margin: "0", padding: "0", paddingTop: "10px"}}>{vendor.fields.name}</h1>

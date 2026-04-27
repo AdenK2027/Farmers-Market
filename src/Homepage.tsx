@@ -15,7 +15,7 @@ interface ProductProps {
   vendor_id: number,
 }
 export function ProductProfile({ navigate, name, price, stock, category, vendor, vendor_id }: ProductProps) {
-  const categoryImage = `../${category}.png`
+  const categoryImage = `${category}.png`
   return (
     <div className="productContainer home" onClick={(e) =>{
       e.preventDefault();
@@ -25,7 +25,7 @@ export function ProductProfile({ navigate, name, price, stock, category, vendor,
         <img src={categoryImage} 
         style={{height: "3vw", paddingRight: "7px"}}
         onError={(e) => {
-            (e.target as HTMLImageElement).src = "../shoppingCart.png";
+            (e.target as HTMLImageElement).src = "shoppingCart.png";
       }}></img>
         <div style={{display: "flex", flexDirection: "column"}}>
           <p style={{margin: "0.25vw"}}>{`Name: ${name}`}</p>
@@ -143,7 +143,7 @@ export default function Homepage({ base, categories }: HomepageProps) {
     <>
     <div className="mainFrame">
       <div className="header">
-        <img src="../longMarketHeader.png" style={{width: "100%", height: "10vw"}}></img>
+        <img src="longMarketHeader.png" style={{width: "100%", height: "10vw"}}></img>
         <p style={{position: "absolute", top: "0%", left: "50%", transform: "translate(-50%, -70%)", fontSize: "max(40px, 6vw)",
           WebkitTextStroke: "2px #786064", fontWeight: "bold", color: "#ffffff", whiteSpace: "nowrap",
         }}>Market Manager</p>
