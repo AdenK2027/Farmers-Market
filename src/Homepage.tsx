@@ -101,7 +101,7 @@ export default function Homepage({ base, categories }: HomepageProps) {
         setVendors(vendorData as unknown as VendorRecord[]);
         const marketData = await base('Markets').select().all();
         setMarkets(marketData as unknown as MarketRecord[]);
-        const products = await base('Products').select({}).firstPage();
+        const products = await base('Products').select({}).all();
         if (products.length > 0) {
           setProducts(products as unknown as ProductRecord[]);
         }
