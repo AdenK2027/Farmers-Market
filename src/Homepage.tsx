@@ -87,6 +87,7 @@ interface HomepageProps {
 
 export default function Homepage({ base, categories }: HomepageProps) {
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [vendors, setVendors] = useState<VendorRecord[]>([]);
   const [markets, setMarkets] = useState<MarketRecord[]>([]);
@@ -113,6 +114,30 @@ export default function Homepage({ base, categories }: HomepageProps) {
 
     fetchAllData();
   }, []);
+
+
+  const filteredProducts = products.filter((product) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    // Find the vendor for THIS product to check their name
+    const associatedVendor = vendors.find(
+      (v) => String(v.id) === String(product.fields.vendor_id)
+    );
+    
+    const associatedCategory = categories.find(
+      (c) => String(c.id) === String(product.fields.category_id)
+    );
+
+    const vendorName = associatedVendor?.fields.name || "";
+    const categoryName = associatedCategory?.fields.name || "";
+    const productName = product.fields.name || "";
+
+    return (
+      productName.toLowerCase().includes(searchLower) ||
+      categoryName.toLowerCase().includes(searchLower) ||
+      vendorName.toLowerCase().includes(searchLower)
+    );
+  });
 
   return (
     <>
@@ -146,18 +171,20 @@ export default function Homepage({ base, categories }: HomepageProps) {
           </div>
 
           <div className="mainBody">
-            <input className="searchBar" placeholder='Search...'>
+            <input className="searchBar" placeholder='Search...' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}>
             </input>
             <div className="searchResults">
-            {products.map((product) => {
-              if (!product.fields.name) return;
+            {filteredProducts.map((product) => {
+              if (!product.fields.name) return null;
+
               const associatedVendor = vendors.find(
-                (v) => v.id === String(product.fields.vendor_id)
+                (v) => String(v.id) === String(product.fields.vendor_id)
               );
 
               const associatedCategory = categories.find(
-                (c) => c.id === String(product.fields.category_id)
+                (c) => String(c.id) === String(product.fields.category_id)
               );
+
               return (
                 <ProductProfile
                   navigate={navigate}

@@ -141,7 +141,6 @@ interface VendorProfileProps {
 export default function VendorProfile({ base, categories }: VendorProfileProps) {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    const [searchTerm, setSearchTerm] = useState("");
 
     const [vendor, setVendor] = useState<VendorRecord | null>(null);
     const [products, setProducts] = useState<ProductRecord[] | null>(null);
