@@ -24,7 +24,7 @@ export function ProductProfile({ name, price, stock, category }: ProductProps) {
                 }}></img>
                 <div style={{display: "flex", flexDirection: "column"}}>
                     <p className="productText">{`Name: ${name}`}</p>
-                    <p className="productText">{`Price: ${price}`}</p>
+                    <p className="productText">{`Price: $${price}`}</p>
                     <p className="productText">{`Stock: ${stock}`}</p>
                 </div>
             </div>
