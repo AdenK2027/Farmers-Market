@@ -71,12 +71,17 @@ interface MarketProps {
     date: Date,
     address: string,
     duration: number,
+    market_id: number,
 }
 
-export function MarketProfile({ organizer, date, address, duration }: MarketProps) {
+export function MarketProfile({ organizer, date, address, duration, market_id }: MarketProps) {
+    const navigate = useNavigate();
     const { dateFormatted, timeRange } = formatMarketInfo(date, duration);
     return (
-        <div className="marketContainer">
+        <div className="marketContainer" onClick={(e) => {
+            e.preventDefault();
+            navigate(`/Market?MarketID=${market_id}`);
+        }}>
             <div style={{display: "flex", flexDirection: "row"}}>
                 <img src="market.png" style={{height: "8vw", paddingRight: "10px"}}></img>
                 <div style={{display: "flex", flexDirection: "column"}}>
@@ -285,6 +290,7 @@ export default function VendorProfile({ base, categories }: VendorProfileProps) 
                         date={market.fields.date}
                         address={market.fields.address}
                         duration={market.fields.duration}
+                        market_id={market.fields.market_id}
                     />
                 ))}
             </div>
