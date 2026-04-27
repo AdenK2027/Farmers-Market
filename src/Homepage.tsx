@@ -171,7 +171,7 @@ export default function Homepage({ base, categories }: HomepageProps) {
           </div>
 
           <div className="mainBody">
-            <input className="searchBar" placeholder='Search...' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}>
+            <input className="searchBar" placeholder='Search by item, category, or vendor' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}>
             </input>
             <div className="searchResults">
             {filteredProducts.map((product) => {
