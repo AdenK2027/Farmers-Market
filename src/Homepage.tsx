@@ -206,12 +206,26 @@ export default function Homepage({ base, categories }: HomepageProps) {
               {loading ? (
                 <p>Loading markets...</p>
               ) : (
-                <ul>
+                <ul style={{paddingBottom: "150px"}}>
                   {markets.map((market) => (
-                    <li key={market.id}>
-                      <strong>{market.fields.organizer}</strong>
-                      <a href={`https://www.google.com/search?q=${market.fields.address}`} target="_blank">
-                        {market.fields.address}
+                    <li key={market.id} style={{ marginBottom: "15px", listStyle: "none" }}>
+                      <strong 
+                        className="market" 
+                        style={{display: "block"}}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate(`/Market?MarketID=${market.fields.market_id}`);
+                        }}
+                      >
+                        {market.fields.organizer}
+                      </strong>
+                      <a 
+                        href={`https://www.google.com/search?q=${market.fields.address}`} 
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ fontSize: "0.9rem", color: "#666", textDecoration: "none" }}
+                      >
+                        📍 {market.fields.address}
                       </a>
                     </li>
                   ))}

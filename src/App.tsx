@@ -3,6 +3,7 @@
 import './App.css'
 import Airtable from 'airtable';
 import VendorProfile from './Vendor';
+import MarketProfile from './Market';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Homepage from './Homepage';
 import { useEffect, useState } from 'react';
@@ -34,6 +35,9 @@ function AppRoutes({ categories }: AppRoutesProps) {
       <Route path="/Vendor" element={<VendorProfile 
         base={base}
         categories={categories}
+      />} />
+      <Route path="/Market" element={<MarketProfile 
+        base={base}
       />} />
     </Routes>
   );

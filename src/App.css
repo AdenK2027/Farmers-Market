@@ -35,6 +35,16 @@
     width: 25%;
 }
 
+.market {
+    cursor: pointer;
+    font-size: 18px;
+    transition: .2s;
+}
+
+.market:hover {
+    font-size: 22px;
+}
+
 .mainBody {
     flex: 1;
     background-color: #C4B3B8;
