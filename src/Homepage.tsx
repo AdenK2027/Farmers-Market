@@ -29,7 +29,7 @@ export function ProductProfile({ navigate, name, price, stock, category, vendor,
       }}></img>
         <div style={{display: "flex", flexDirection: "column"}}>
           <p style={{margin: "0.25vw"}}>{`Name: ${name}`}</p>
-          <p style={{margin: "0.25vw"}}>{`Price: ${price}`}</p>
+          <p style={{margin: "0.25vw"}}>{`Price: $${price}`}</p>
           <p style={{margin: "0.25vw"}}>{`Stock: ${stock}`}</p>
           <p style={{margin: "0.25vw"}}>{`Vendor: ${vendor}`}</p>
         </div>
