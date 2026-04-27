@@ -54,7 +54,7 @@ export default function App() {
   },[])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Farmers-Market/">
       <AppRoutes 
       categories={categories}
       />
